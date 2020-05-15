@@ -1,0 +1,114 @@
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="theme-color" content="#171a21">
+
+scrollbar {
+    height: 12px;
+    width: 14px;
+    background: transparent;
+    z-index: 12;
+    overflow: visible;
+}
+
+strip_item {
+    float: left;
+    height: 65px;
+    width: 116px;
+    cursor: pointer;
+    text-align: center;
+    margin: 2px;
+    background-color: #000000;
+    position: relative;
+
+	//make all the strip items clickable
+	var thisClosure = this;
+	this.m_elemStrip.find( '.highlight_strip_item' ).each(
+		function() {
+			var $Thumbnail = $J(this);
+			$Thumbnail.click( function() { thisClosure.HighlightItem( $Thumbnail, true ); } );
+		}
+	);
+
+	this.m_elemSelector = this.m_elemStrip.find('.highlight_selector');
+
+	var elemSlider = $JFromIDOrElement(args.elemSlider);
+
+	var _this = this;
+	$J(window ).on('resize.GameHighlightPlayer', function() {
+		var nSliderWidth = _this.m_elemStripScroll.width() - _this.m_elemStrip.width();
+		if ( nSliderWidth > 0 )
+		{
+			if ( !_this.slider )
+			{
+				_this.slider = new CSlider( elemSlider, elemSlider.find('.handle'), {
+					min: 0,
+					max: nSliderWidth,
+					fnOnChange: $J.proxy( _this.SliderOnChange, _this )
+				});
+			}
+			else
+				_this.slider.SetRange( 0, nSliderWidth );
+
+			elemSlider.show();
+		}
+		else
+		{
+			elemSlider.hide();
+		}
+	} ).trigger('resize.GameHighlightPlayer');
+
+	var cItems = this.m_elemPlayerArea.find( '.highlight_player_item' ).length;
+	if ( cItems == 1 )
+	{
+				this.m_elemStrip.hide();
+	}
+
+	this.m_elemContainer = args.elemContainer ? $JFromIDOrElement(args.elemContainer) : this.m_elemPlayerArea.parents('.highlight_ctn');
+	this.m_elemContainer.on( 'mouseover', $J.proxy( this.mouseOver, this ) );
+	this.m_elemContainer.on( 'mouseout', $J.proxy( this.mouseOut, this ) );
+
+	var firstItem = args.firstItem ? $JFromIDOrElement(args.firstItem) : this.m_elemPlayerArea.find( '.highlight_player_item' ).first();
+
+	if ( !this.m_bVideoOnlyMode && !BIsUserGameHighlightAutoplayEnabled() )
+	{
+		firstItem = this.m_elemPlayerArea.find( '.highlight_screenshot').first();
+	}
+
+	this.HighlightItem( firstItem );
+
+	RegisterSteamOnWebPanelShownHandler( $J.proxy( this.OnWebPanelShown, this ) );
+	RegisterSteamOnWebPanelHiddenHandler( $J.proxy( this.OnWebPanelHidden, this ) );
+
+	var _this = this;
+	if ( $J(document.body).hasClass( 'v6' ) )
+	{
+		var $ScreenshotsLinks = $J(this.m_elemPlayerArea).find('.highlight_player_item.highlight_screenshot a.highlight_screenshot_link');
+
+		$ScreenshotsLinks.click( function( event ) {
+			_this.OnScreenshotClick( event, this );
+		} );
+	}
+
+	$J(this.m_elemPlayerArea).find('.highlight_player_item.highlight_screenshot img').on('load', function() {
+		var $Img = $J(this);
+		var $Ctn = $Img.parents('.highlight_player_item');
+
+		var bIsHidden = !$Ctn.is(':visible');
+		if ( bIsHidden )
+			$Ctn.css('visibility','hidden' ).show();
+
+		if ( $Img.height() > $Ctn.height() )
+		{
+			$Ctn.addClass('tall');
+		}
+		else
+		{
+			$Ctn.removeClass('tall');
+		}
+
+		if ( bIsHidden )
+			$Ctn.css('visibility','' ).hide();
+	});
+}

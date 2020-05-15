@@ -1,0 +1,116 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+  box-sizing: border-box;
+}
+html, body {		
+    margin: 0;	    
+	height:100%;
+/*	width: 100%;	*/
+/*	text-align: center;*/
+}
+
+.container{
+	position: absolute;
+	width: 100%;
+	height: 99%;
+	margin: 0 auto;
+	display: table;
+	top: 0;
+/*	background-color: black;*/
+/*
+	opacity: 0.94;
+  	filter: Alpha(opacity=50);
+*/
+}
+.landside{    
+	vertical-align: middle;
+	max-width: inherit;	
+	transform: scaleY(100%);
+}
+.landside{
+/*    position: fixed;    */
+	display: table-cell;
+	width: 100%;
+    height: 100%;
+/*    top: 0%;*/
+	background-image: url("../gallery/Louigene/Chair_small.JPG");
+    background-attachment: fixed;
+	background-repeat: no-repeat; 
+	background-size: cover;
+/*	background-position: left;*/
+	background-clip: content-box;
+    background-blend-mode: lighten;
+/*	padding: 5px;*/
+}
+.middle {
+    border: solid #462045;
+    position: fixed;	
+    width: 30%;
+	height: 20%;    
+    left: 35%;
+    margin: 0 auto;
+    top: 25%;	
+	transform: scaleY(100%);
+}
+
+.navbar{
+	position: absolute;
+	width: 90%;
+	height: 50%;
+	top: 259px;
+	left: 38px;
+}
+
+@media screen and (max-width: 768px){
+	* {
+  box-sizing: border-box;
+}
+.container{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	display: table;
+	top: 0;
+}	
+
+.landside{	
+	display: table-cell;
+	width: 100%;	
+	height: 100%;
+	background-size: 100% 100%;
+	}
+	
+	.navbar{		
+	position: absolute;
+	width: 90%;
+	height: 50%;
+	top: 40%;
+	left: 5%;
+}
+
+}
+
+@media screen and (max-width: 425px){
+	.container{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	display: table;
+	top: 0;
+}
+	.navbar{			
+	position: absolute;
+	width: 90%;
+	height: 50%;
+	top: 40%;
+	left: 5%;
+}
+}
+
+ 
+@media screen and (max-width: 320px){
+
+}

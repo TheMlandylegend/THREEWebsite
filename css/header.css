@@ -1,0 +1,191 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+
+
+/* Style tab links */
+.tablink {
+/*   position: fixed;*/
+  background-color: #555;
+  color: white;
+  float: left;
+  right: 20%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 20px 16px 20px 16px;
+  margin:  0px 15px 5px 20px;
+  font-size: 20px;
+  width: 30%;
+}
+button .tablink{
+    width: 50%;
+}
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  height: 50%;
+}
+
+.row{
+    position: fixed;    
+    width: 90%;
+    height: 40%;
+    left: 3%;
+    top: 60%;
+   
+        
+}
+.column{	
+    position: static;
+    border: 5px solid black;    
+    width: 28%;
+    height: 70%;
+    float: left;  
+    padding: 10px; 
+    margin-left: 5%;
+	top: 40%;
+	background-color:rgba(192,192,192,0.3);
+}
+
+h1{
+	text-align: center;
+	font-size: 30px;
+}
+h2{
+	font-size: 20px;
+	text-align: justify;
+}
+h3{
+    font-family: 'Bonbon Regular', 'cursive';
+    text-align: center;
+	color: black;
+	font-size: 50px;
+	padding: 10px 50px;
+	
+}
+p{
+     text-align: center;
+    font-family: 'bonbon';
+	font-size: 35px;
+	background-color:rgba(192,192,192,0.3);
+}
+img{
+    position: relative;
+    left: 50%; 
+	top: -40%;
+	border: 5px solid rgba(192,192,192,0.3);
+	cursor: pointer; 
+}
+
+input[type=text], textarea{
+/*	background-color:rgba(192,192,192,0.3);*/
+	background-color:rgb(170,170,200);
+}
+input[type=text], textarea,button {	
+	width: 30%;
+	display: block;
+    padding: 5px;
+    border-radius: 2%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+    box-sizing: border-box;
+	margin-left: 35%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+	top: 100%;
+    resize: vertical;
+    -webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;			
+}
+button[type=submit] {    
+    color: black;
+    padding: 0px 5px;    
+    border-radius: 1px;
+    cursor: pointer;
+}
+button:hover  {
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px rgba(0,0,0,0.19);
+}
+@media screen and (max-width: 768px){
+	* {
+  box-sizing: border-box;
+		
+}
+.tablink {
+/*	position: absolute;*/
+  float: left;
+  left: -20%;
+  padding: 20px 16px 20px 16px;
+  margin:  2px 15px 5px 20px;
+  font-size: 20px;
+  width: 28%;
+}
+h1{
+	text-align: center;
+	font-size: 30px;
+}
+h2{
+	font-size: 20px;
+	text-align: center;
+	
+}
+
+img{
+    position: relative;
+    left: 28%; 
+	top: 10%;
+	width: 50%;
+	border: 5px solid rgba(192,192,192,0.3);
+}
+}
+
+@media screen and (max-width: 425px){
+.tablink {
+  float: left;
+  left: -20%;
+  padding: 5px 20px 10px 10px;
+  margin:  10px 30px -10px 19px;
+  font-size: 15px;
+  width: 20%;
+}
+h1{
+	text-align: center;
+	font-size: 15px;
+}
+h2{
+	font-size: 10px;
+	text-align: center;
+	
+}
+	p{
+		font-size: 20px;
+	}
+
+img{
+    
+    left: 28%; 
+	top: 10%;	
+	
+}
+}
+
+ 
+@media screen and (max-width: 320px){
+.tablink {
+  float: left;
+  left: -20%;
+  padding: 5px 20px 10px 20px;
+  margin:  10px 30px -10px 19px;
+  font-size: 15px;
+  width: 40%;
+}
+}
